@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CR CHEAP ROBUX</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{width:100%;height:100%;overflow-x:hidden;font-family:Arial;background:linear-gradient(180deg,#050000,#120000);color:white;}
+canvas{position:fixed;inset:0;width:100vw;height:100vh;z-index:-1;pointer-events:none;}
+header{display:flex;justify-content:space-between;align-items:center;padding:25px;}
+h1{color:red;font-size:32px;}
+header img{width:42px;cursor:pointer;}
+.shop{display:grid;grid-template-columns:repeat(2,1fr);gap:40px;max-width:900px;margin:80px auto;padding:20px;}
+.card{background:rgba(20,0,0,0.85);border:2px solid red;border-radius:22px;min-height:220px;display:flex;flex-direction:column;justify-content:center;align-items:center;font-size:26px;transition:.35s;cursor:pointer;position:relative;overflow:hidden;}
+.card:hover{transform:scale(1.12);}
+.card canvas{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+.card div{position:relative;z-index:1;}
+.price{margin-top:15px;color:#ff4d4d;font-size:22px;font-weight:bold;}
+.popup{position:fixed;inset:0;background:rgba(0,0,0,0.75);display:none;justify-content:center;align-items:center;}
+.popup div{background:#140000;border:2px solid red;padding:35px;border-radius:18px;text-align:center;max-width:320px;}
+</style>
+</head>
+<body>
+
+<canvas id="rain"></canvas>
+
+<header>
+  <h1>CR CHEAP ROBUX</h1>
+  <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" onclick="window.open('https://discord.gg/tBwSDefRAR')">
+</header>
+
+<div class="shop">
+  <div class="card" onclick="openPop()">
+    <canvas class="cardRain"></canvas>
+    <div>5k<div class="price">$8</div></div>
+  </div>
+  <div class="card" onclick="openPop()">
+    <canvas class="cardRain"></canvas>
+    <div>10k<div class="price">$15</div></div>
+  </div>
+  <div class="card" onclick="openPop()">
+    <canvas class="cardRain"></canvas>
+    <div>25k<div class="price">$30</div></div>
+  </div>
+  <div class="card" onclick="openPop()">
+    <canvas class="cardRain"></canvas>
+    <div>50k<div class="price">$50</div></div>
+  </div>
+  <div class="card" onclick="openPop()">
+    <canvas class="cardRain"></canvas>
+    <div>100k<div class="price">$95</div></div>
+  </div>
+  <div class="card" onclick="openPop()">
+    <canvas class="cardRain"></canvas>
+    <div>250k<div class="price">$220</div></div>
+  </div>
+  <div class="card" onclick="openPop()">
+    <canvas class="cardRain"></canvas>
+    <div>500k<div class="price">$400</div></div>
+  </div>
+</div>
+
+<div class="popup" id="pop" onclick="closePop()">
+  <div>
+    Join the Discord<br><br>
+    <a href="https://discord.gg/tBwSDefRAR" style="color:red">discord.gg/tBwSDefRAR</a><br><br>
+    Make a ticket and wait for staff.
+  </div>
+</div>
+
+<script>
+function openPop(){document.getElementById('pop').style.display='flex';}
+function closePop(){document.getElementById('pop').style.display='none';}
+
+// Full-screen background red rain
+const bgCanvas = document.getElementById('rain');
+const bgCtx = bgCanvas.getContext('2d');
+function resizeBg(){bgCanvas.width=window.innerWidth; bgCanvas.height=window.innerHeight;}
+resizeBg();
+window.addEventListener('resize', resizeBg);
+
+const bgDrops = [];
+for(let i=0;i<800;i++){bgDrops.push({x:Math.random()*bgCanvas.width, y:Math.random()*bgCanvas.height, l:Math.random()*35+15, s:Math.random()*3+2});}
+function drawBgRain(){
+  bgCtx.clearRect(0,0,bgCanvas.width,bgCanvas.height);
+  bgCtx.strokeStyle='rgba(255,0,0,0.6)';
+  bgCtx.lineWidth=1;
+  for(const d of bgDrops){
+    bgCtx.beginPath();
+    bgCtx.moveTo(d.x,d.y);
+    bgCtx.lineTo(d.x,d.y+d.l);
+    bgCtx.stroke();
+    d.y += d.s;
+    if(d.y>bgCanvas.height){d.y=-50; d.x=Math.random()*bgCanvas.width;}
+  }
+  requestAnimationFrame(drawBgRain);
+}
+drawBgRain();
+
+// Rain inside cards
+const cardCanvases = document.querySelectorAll('.cardRain');
+cardCanvases.forEach(c=>{
+  const ctx=c.getContext('2d');
+  function resizeCard(){c.width=c.offsetWidth; c.height=c.offsetHeight;}
+  resizeCard();
+  window.addEventListener('resize', resizeCard);
+
+  const drops=[];
+  for(let i=0;i<50;i++){drops.push({x:Math.random()*c.width, y:Math.random()*c.height, l:Math.random()*20+10, s:Math.random()*2+1});}
+
+  function drawCardRain(){
+    ctx.clearRect(0,0,c.width,c.height);
+    ctx.strokeStyle='rgba(255,0,0,0.5)';
+    ctx.lineWidth=1;
+    for(const d of drops){
+      ctx.beginPath();
+      ctx.moveTo(d.x,d.y);
+      ctx.lineTo(d.x,d.y+d.l);
+      ctx.stroke();
+      d.y += d.s;
+      if(d.y>c.height){d.y=-20; d.x=Math.random()*c.width;}
+    }
+    requestAnimationFrame(drawCardRain);
+  }
+  drawCardRain();
+});
+</script>
+
+</body>
+</html>
